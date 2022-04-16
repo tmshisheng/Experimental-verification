@@ -63,12 +63,6 @@ class DeepSVDD():
         self.test_scores = idx_label_score
 
 
-    def save_model(self, model_path):
-        """Save Deep SVDD model to export_model."""
-        net_dict = self.net.state_dict()
-        torch.save({'R': self.R, 'c': self.c, 'net_dict': net_dict,}, model_path)
-
-
     def load_model(self, model_path):
         """Load Deep SVDD model from model_path."""
         model_dict = torch.load(model_path)

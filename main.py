@@ -36,7 +36,7 @@ def ToNN(data,window_size):
     return train_x,train_y
 
 
-# Train Predictor
+# Load Predictor
 print('Loading trained predictor ...')
 predictor = torch.load('TrainedNeuralNetworks/predictor%d.pth' %(window_size))
 # Generate innovations
@@ -121,16 +121,19 @@ mad39 = np.mean(score39>threshold)/dt
 DecisionMaker.test((feature41))
 score41 = DecisionMaker.test_scores
 mad41 = np.mean(score41>threshold)/dt
+
 # Figures
 print('Plotting figures ...')
+## MAD
 plt.figure(1)
 plt.bar(['AfterGilroy40%','AfterGilroy67%','AfterGilroy100%','AfterGilroy120%'],[mad13,mad22,mad39,mad41])
 plt.title('Results for MAD')
+## MFAD
 plt.figure(2)
 plt.bar(['AfterGilroy40%','AfterGilroy67%','AfterGilroy100%','AfterGilroy120%'],[mfad1_3/mad13,mfad1_3/mad22,mfad1_3/mad39,mfad1_3/mad41])
 plt.axhline(y=1, c="r", ls="--", lw=2)
 plt.title('Results for MFAD/MAD')
-# Validation loss
+## Validation loss
 valid_loss_history = pickle.load(open('TrainedNeuralNetworks/valid_loss_history.pth','rb'))
 nepochs = len(valid_loss_history)
 valid_loss_all = []
