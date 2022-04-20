@@ -53,31 +53,31 @@ Valid_x,Valid_y = ToNN(data1_2,kmlp)
 feature1_2 = Test_MyNet(predictor,Valid_x,Valid_y); feature1_2 = feature1_2.numpy()
 ## Undamaged feature for testing (Trial 5)
 data1_3 = np.loadtxt('TestingData/Trial5-Undamaged.csv', dtype="float", delimiter=',')[4000:70000,channel]
-data1_3=signal.detrend(data1_3,axis=0)*4/3; data1_3=data1_3[63000:,:]
+data1_3 = signal.detrend(data1_3,axis=0)*4/3; data1_3=data1_3[63000:,:]
 Test1_x,Test1_y = ToNN(data1_3,kmlp)
 feature1_3 = Test_MyNet(predictor,Test1_x,Test1_y)
 feature1_3 = feature1_3.numpy() 
 ## Damaged feature for testing (Trial 13)
 data13 = np.loadtxt('TestingData/Trial13-AfterGilroy40%.csv', dtype="float", delimiter=',')[4000:70000,channel]
-data13=(data13-np.mean(data13,axis=0))*4/3
+data13 = signal.detrend(data13,axis=0)*4/3
 Test13_x,Test13_y = ToNN(data13,kmlp)
 feature13 = Test_MyNet(predictor,Test13_x,Test13_y)
 feature13 = feature13.numpy() 
 ## Damaged feature for testing (Trial 22)
 data22 = np.loadtxt('TestingData/Trial22-AfterGilroy67%.csv', dtype="float", delimiter=',')[4000:70000,channel]
-data22=(data22-np.mean(data22,axis=0))
+data22 = signal.detrend(data22,axis=0)
 Test22_x,Test22_y = ToNN(data22,kmlp)
 feature22 = Test_MyNet(predictor,Test22_x,Test22_y)
 feature22 = feature22.numpy() 
 ## Damaged feature for testing (Trial 39)
 data39 = np.loadtxt('TestingData/Trial39-AfterGilroy100%.csv', dtype="float", delimiter=',')[4000:70000,channel]
-data39=(data39-np.mean(data39,axis=0))
+data39 = signal.detrend(data39,axis=0)
 Test39_x,Test39_y = ToNN(data39,kmlp)
 feature39 = Test_MyNet(predictor,Test39_x,Test39_y)
 feature39 = feature39.numpy() 
 ## Damaged feature for testing (Trial 41)
 data41 = np.loadtxt('TestingData/Trial41-AfterGilroy120%.csv', dtype="float", delimiter=',')[4000:70000,channel]
-data41=(data41-np.mean(data41,axis=0))
+data41 = signal.detrend(data41,axis=0)
 Test41_x,Test41_y = ToNN(data41,kmlp)
 feature41 = Test_MyNet(predictor,Test41_x,Test41_y)
 feature41 = feature41.numpy() 
